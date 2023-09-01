@@ -1,15 +1,6 @@
-# CMPT 733 G100 - Final Project - Spring 2023
+# GoConcert Recommendation
 
-**Team Name:  Data Hunters**
-
-**Team Members:**
-
-| Name | Student ID | Computing ID |
-| :--- | :--- | :--- |
-| Rithik Agarwal | 301560443 | raa72@sfu.ca | 
-| Anmol Malhotra | 301546554 | ama302@sfu.ca | 
-| Hardev Khandhar| 301543441 | hmk9@sfu.ca |
-| Rohan Mathur | 301544232 | rma135@sfu.ca |
+> _This project was completed as part of my graduate coursework at Simon Fraser University (SFU) during the Spring 2023 term. It does not represent the official views or endorsements of Spotify or any other organization. The project's primary goal is to demonstrate data science concepts and practices. It may not reflect real-world practices and any data used is for illustrative purposes only._
 
 ## Purpose & Motivation
 Are you tired of attending concerts and feeling like you're not fully immersed in the experience? Do you struggle to discover live music events that truly align with your tastes and preferences? Look no further! Our project offers a personalized and improved concert discovery experience that will transform the way you enjoy live music.
@@ -20,11 +11,11 @@ But it's not just about enhancing your concert experience. By making it easier f
 
 ## Overview: Spotify
 
-Spotify is a digital music streaming platform that offers users access to millions of songs, podcasts, and other audio content from around the world. The service was launched in 2008 and has since become one of the most popular music streaming services in the world. Spotify offers both free and premium subscription options, with the latter providing additional features such as ad-free listening, offline playback, and higher-quality audio. Users can access Spotify via the web or through the Spotify app, which is available for download on various devices including smartphones, tablets, computers, and smart speakers. Additionally, Spotify offers a range of features such as personalized playlists, social sharing, and algorithmic music recommendations, which help users discover new music and connect with others who share their musical tastes.
+Spotify is a digital music streaming platform that offers users access to millions of songs, podcasts and other audio content from around the world. The service was launched in 2008 and has since become one of the most popular music streaming services in the world. Spotify offers both free and premium subscription options, with the latter providing additional features such as ad-free listening, offline playback and higher-quality audio. Users can access Spotify via the web or through the Spotify app, which is available for download on various devices including smartphones, tablets, computers and smart speakers. Additionally, Spotify offers a range of features such as personalized playlists, social sharing and algorithmic music recommendations, which help users discover new music and connect with others who share their musical tastes.
 
 ## Overview: Ticketmaster
 
-Ticketmaster is a global marketplace for buying and selling tickets to live events, including concerts, sports games, theater performances, and more. Founded in 1976, Ticketmaster has grown to become one of the largest ticketing companies in the world, providing access to events in over 30 countries. The company offers a range of services, including online ticket sales, mobile ticketing, and ticket resale. Through its website and app, Ticketmaster provides users with a convenient way to browse events, purchase tickets, and manage their bookings.
+Ticketmaster is a global marketplace for buying and selling tickets to live events, including concerts, sports games, theater performances and more. Founded in 1976, Ticketmaster has grown to become one of the largest ticketing companies in the world, providing access to events in over 30 countries. The company offers a range of services, including online ticket sales, mobile ticketing and ticket resale. Through its website and app, Ticketmaster provides users with a convenient way to browse events, purchase tickets and manage their bookings.
 
 ## Problem Definition
 
@@ -130,7 +121,7 @@ Our project aims to solve the lack of personalized and immersive concert experie
 
 **Ticketmaster Data** 
 
-This dataset gives information on concerts happening in the user-selected location during the given time period. It contains information such as the location, date and time of the concert, the artists performing, the venue, and the ticket price. The dataset is retrieved using the TicketMaster API which takes the predicted genre from the ML model to fetch the latest concerts.
+This dataset gives information on concerts happening in the user-selected location during the given time period. It contains information such as the location, date and time of the concert, the artists performing, the venue and the ticket price. The dataset is retrieved using the TicketMaster API which takes the predicted genre from the ML model to fetch the latest concerts.
 
 
 **User Playlist** 
@@ -144,7 +135,7 @@ Our project began by identifying various music genres present on Spotify worldwi
 
 **Data Scraping**
 
-Data was scraped using Spotify's API. Scripts were written to accomodate different types of features of songs for extraction for a single playlist. Initially, script for scraping playlist information, which consisted of playlist IDs was written. This script defined 60 sub-genres, which were taken from the internet, and used these sub-genres to scrape 60 playlists for each genre. This gave out approximately **5,500** playlists, which contained numerous songs. 
+Data was scraped using Spotify's API. Scripts were written to accomodate different types of features of songs for extraction for a single playlist. Initially, script for scraping playlist information, which consisted of playlist IDs was written. This script defined 60 sub-genres, which were taken from the internet and used these sub-genres to scrape 60 playlists for each genre. This gave out approximately **5,500** playlists, which contained numerous songs. 
 
 After extracting playlist IDs for each genre, using these ID's, features for each song in these playlists were scraped using another script. Scraping for features of songs ran for approximately **3 days**, by shuffling API keys and gathering approximately **1.17GB** in data in JSON format.
 
@@ -152,11 +143,11 @@ After gathering features for each song for each playlist, a **PySpark** script w
 
 Features of songs that were scraped are defined as below - 
 
-- **Danceability** - Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.
+- **Danceability** - Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.
 
-- **Energy** - Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.
+- **Energy** - Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate and general entropy.
 
-- **Key** - The key the track is in. Integers map to pitches using standard Pitch Class notation. E.g. 0 = C, 1 = C#/Db, 2 = D, and so on.
+- **Key** - The key the track is in. Integers map to pitches using standard Pitch Class notation. E.g. 0 = C, 1 = C#/Db, 2 = D and so on.
 
 - **Loudness** - The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks. Loudness is the quality of a sound that is the primary psychological correlate of physical strength (amplitude). Values typical range between -60 and 0 db.
 
@@ -176,7 +167,7 @@ Features of songs that were scraped are defined as below -
 
 **Analysis**
 
-After the user provides the link to their playlist, the application extracts all songs and associated information from the playlist. This data is pre-processed before analysis, which is then utilized to generate various graphs and information about the user's playlist. The generated information includes playlist uniqueness, playlist length, popularity, and graphs showing danceability, happiness, top genres, and top artists. This information is then displayed on the application for the user to view and gain insights into their musical taste.  
+After the user provides the link to their playlist, the application extracts all songs and associated information from the playlist. This data is pre-processed before analysis, which is then utilized to generate various graphs and information about the user's playlist. The generated information includes playlist uniqueness, playlist length, popularity and graphs showing danceability, happiness, top genres and top artists. This information is then displayed on the application for the user to view and gain insights into their musical taste.  
 
 **Machine Learning Models & Training**
 
@@ -185,7 +176,7 @@ This section outlines three different approaches for predicting the genre of mus
 
 **Application**
 
-The web application is built using Flask and Requests for the backend. Webpages are created using HTML, Jinja2, and CSS for styling. Upon loading the home page, the user is prompted to input the link to their playlist. This link is utilized to extract song data and related information, which is then stored as a CSV file in the data folder. The application offers two options to the user: Analysis and Recommendation. If the Analysis option is selected, the user is redirected to a new page where they can view all analytics generated from their playlist. If the Recommendation option is selected, the user is redirected to a new page where the top 5 predicted genres are displayed, and the user is prompted to provide additional information such as their preferred location and time range for concert recommendations. This information, combined with the predicted genre, is used to generate personalized concert recommendations for the user, which are then displayed on a new page. The web application is hosted using EC2.
+The web application is built using Flask and Requests for the backend. Webpages are created using HTML, Jinja2 and CSS for styling. Upon loading the home page, the user is prompted to input the link to their playlist. This link is utilized to extract song data and related information, which is then stored as a CSV file in the data folder. The application offers two options to the user: Analysis and Recommendation. If the Analysis option is selected, the user is redirected to a new page where they can view all analytics generated from their playlist. If the Recommendation option is selected, the user is redirected to a new page where the top 5 predicted genres are displayed and the user is prompted to provide additional information such as their preferred location and time range for concert recommendations. This information, combined with the predicted genre, is used to generate personalized concert recommendations for the user, which are then displayed on a new page. The web application is hosted using EC2.
 
 ## Results
 
@@ -197,7 +188,7 @@ The web application is built using Flask and Requests for the backend. Webpages 
 
 - The team learned Agile Methodologies and the Software Development Lifecycle, including initial architecture design and code structures. Agile allowed the team to easily adjust to changing requirements, which was not possible in the waterfall model.
 
-- Overall, the project proved to be a valuable learning opportunity for the team, providing them with a practical understanding of music analysis, machine learning, API usage, web application development, and Agile methodologies.
+- Overall, the project proved to be a valuable learning opportunity for the team, providing them with a practical understanding of music analysis, machine learning, API usage, web application development and Agile methodologies.
 
 
 ## Project Execution
@@ -213,7 +204,7 @@ We have tried our best to make everything work smoothly, but if you encounter an
 
 - The project provided the team with an opportunity to explore the vastness of big data and solve real-world problems while learning and applying big data applications. 
 
-- Large data sets allowed for the uncovering of hidden patterns, unknown correlations, and user preferences, providing valuable information that enhanced the user experience and helped to solve real-world problems.
+- Large data sets allowed for the uncovering of hidden patterns, unknown correlations and user preferences, providing valuable information that enhanced the user experience and helped to solve real-world problems.
 
 - The project provided the team with practical experience in data science. By leveraging data-driven insights, the team was able to make informed decisions and implement effective solutions to address the problem at hand.
 
