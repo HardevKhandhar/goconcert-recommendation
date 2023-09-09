@@ -34,7 +34,7 @@ Our project aims to solve the lack of personalized and immersive concert experie
 
 ## Project Structure
 
-```
+```bash
 .
 ├── __init__.py
 ├── README.md
